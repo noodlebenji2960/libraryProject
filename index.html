@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <header id="header_container">
+        <div>
+            <button id="hamburger"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg></button>
+            <div id="logo">myLibrary</div>
+        </div>
+        <div>
+            <div>
+                Unread: 24
+            </div>
+            <div>
+                Read: 24
+            </div>
+            <div>
+                Total Books: 24
+            </div>
+        </div>
+    </header>
+    <nav id="sidebar">
+        <div>
+            <div id="logo">myLibrary</div>
+            <button id="close_sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/></svg>
+            </button>
+        </div>
+        <div>
+            <label for="search_book">Search</label>
+            <input type="search" name="search_book" id="search_book">
+        </div> 
+    </nav>
+    <main id="main_container">
+        <table id="library_table">
+            <thead>
+              <tr>
+                <th>Cover</th>
+                <th>Title<button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></button></th>
+                <th>Author <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></button></th>
+                <th>Pages <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></button></th>
+                <th>Read <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></button></th>
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+            </table>
+        <button id="newbook_button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/></svg>
+        </button>
+        <div id="messenger"></div>
+    </main>
+    <footer id="footer_container"></footer>
+    <div id="overlay">
+        <div id="form_container">
+            <form id="newbook_form">
+                <fieldset>
+                    <legend>Add New Book</legend>
+                    <label for="newbook_input_title">Title*</label>
+                    <input type="text" name="newbook_input_title" id="newbook_input_title" required>
+                    <label for="newbook_input_author">Author*</label>
+                    <input type="text" name="newbook_input_author" id="newbook_input_author" required>
+                    <label for="newbook_input_pages">no. of pages</label>
+                    <input type="number" name="newbook_input_pages" id="newbook_input_pages">
+                    <label for="newbook_input_frontcover">Front Cover</label>
+                    <input type="file" name="newbook_input_frontcover" id="newbook_input_frontcover">
+                    <label for="newbook_input_read">Have you read this book?</label>
+                    <input type="checkbox" name="newbook_input_read" id="newbook_input_read">
+                    <input type="submit" value="submit">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
