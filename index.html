@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+
     <title>Library</title>
 </head>
 <body>
@@ -13,40 +14,49 @@
         <div>
             <button id="hamburger"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg></button>
             <div id="logo">myLibrary</div>
+            <input type="search" name="search_book" id="search_book" placeholder="Search myLibrary..." oninput="searchBar()"><a href="#">Advanced</a>
         </div>
-        <div>
-            <div>
-                Unread: 24
+        <div id="log">
+            <div id="unreadLog">
+                Unread:
             </div>
-            <div>
-                Read: 24
+            <div id="readLog">
+                Read:
             </div>
-            <div>
-                Total Books: 24
+            <div id="totalLog">
+                Total Books:
             </div>
         </div>
     </header>
     <nav id="sidebar">
         <div>
-            <div id="logo">myLibrary</div>
             <button id="close_sidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"/></svg>
             </button>
+            <div id="logo">myLibrary</div>
         </div>
-        <div>
-            <label for="search_book">Search</label>
-            <input type="search" name="search_book" id="search_book">
-        </div> 
+        
+        <ul>
+            <li>Trending Books</li>
+            <li>Subjects</li>
+            <li>Recommended</li>
+
+            <li>myDashboard</li>
+            <li>myLibrary</li>
+            <li>myGroups</li>
+
+            <li>About</li>
+        </ul>
     </nav>
     <main id="main_container">
         <table id="library_table">
             <thead>
               <tr>
                 <th>Cover</th>
-                <th>Title<button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></button></th>
-                <th>Author <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></button></th>
-                <th>Pages <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></button></th>
-                <th>Read <button><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg></button></th>
+                <th id="title_chevron">Title</th>
+                <th id="author_chevron">Author</th>
+                <th id="pages_chevron">Pages</th>
+                <th id="read_chevron">Read</th>
                 <th>Options</th>
               </tr>
             </thead>
@@ -60,25 +70,41 @@
         <div id="messenger"></div>
     </main>
     <footer id="footer_container"></footer>
-    <div id="overlay">
+    <div id="overlay" class="overlay">
         <div id="form_container">
             <form id="newbook_form">
                 <fieldset>
                     <legend>Add New Book</legend>
-                    <label for="newbook_input_title">Title*</label>
-                    <input type="text" name="newbook_input_title" id="newbook_input_title" required>
-                    <label for="newbook_input_author">Author*</label>
-                    <input type="text" name="newbook_input_author" id="newbook_input_author" required>
-                    <label for="newbook_input_pages">no. of pages</label>
-                    <input type="number" name="newbook_input_pages" id="newbook_input_pages">
-                    <label for="newbook_input_frontcover">Front Cover</label>
-                    <input type="file" name="newbook_input_frontcover" id="newbook_input_frontcover">
-                    <label for="newbook_input_read">Have you read this book?</label>
-                    <input type="checkbox" name="newbook_input_read" id="newbook_input_read">
+                    <label for="newbook_input_title">Title*</label><br>
+                    <input type="text" name="newbook_input_title" id="newbook_input_title" required oninput="queryGoogleBooksApi()" ><br>
+                    <div id="title_input_results">
+                        <table id="title_input_results_table">
+                        <thead>
+                          <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Author</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+            
+                        </tbody>
+                        </table></div>
+                    <label for="newbook_input_author">Author*</label><br>
+                    <input type="text" name="newbook_input_author" id="newbook_input_author" required oninput="queryGoogleBooksApi()"><br>
+                    <label for="newbook_input_pages">no. of pages</label><br>
+                    <input type="string" name="newbook_input_pages" id="newbook_input_pages"><br>
+                    <label for="newbook_input_frontcover">Front Cover</label><br>
+                    <input type="URL" name="newbook_input_froncoverURL" id="newbook_input_frontcoverURL">
+                    <input type="file" name="newbook_input_frontcoverFile" id="newbook_input_frontcoverFile"><br>
+                    <label for="newbook_input_read">Have you read this book?</label><br>
+                    <input type="checkbox" name="newbook_input_read" id="newbook_input_read"><br>
                     <input type="submit" value="submit">
                 </fieldset>
             </form>
         </div>
     </div>
+
+
 </body>
 </html>
